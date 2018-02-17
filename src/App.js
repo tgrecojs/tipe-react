@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import ChuckJoke from "./ChuckJoke";
+import TipeApiComponent from "./Api.renderProps";
 import cn from 'classnames';
 
 console.log(process.env)
 const Joke = ({ apiType, category }) => {
   return (
-    <ChuckJoke  apiType={apiType} category={category}>
+    <TipeApiComponent  apiType={apiType} category={category}>
       {({ joke, fetchJoke, loading }) => (
         <section className="hero is-primary">
           <div className="hero-body">
@@ -20,15 +20,22 @@ const Joke = ({ apiType, category }) => {
           </div>
         </section>
       )}
-    </ChuckJoke>
+    </TipeApiComponent>
   );
 }
 
-function JokeAdvanced({ data, apiType,category }) {
+function JokeAdvanced({ queryKey, apiType,category }) {
+  const key = `${queryKey}`;
+
   return (
-    <ChuckJoke data={data} apiType={apiType} category={category}>
-      {({ joke, fetchJoke,fetchApi, loading, url }) =>  {
-        console.log(data)
+    <TipeApiComponent apiType={apiType} category={category}>
+      {({
+        joke, 
+        tipeIOData,
+        fetchJoke, 
+        fetchApi,
+        loading,
+        url }) =>  {
         return (
         <section className="hero is-info">
           <div className="hero-body">
@@ -43,7 +50,7 @@ function JokeAdvanced({ data, apiType,category }) {
               <p style={{ marginBottom: 30 }}>
                 <b>Url</b>: <a href={url}>{url}</a>
               </p>
-           
+             
               <a
                 className={cn("button is-info", {
                   "is-loading": loading,
@@ -57,12 +64,12 @@ function JokeAdvanced({ data, apiType,category }) {
           </div>
         </section>
       )}}
-    </ChuckJoke>
+    </TipeApiComponent>
   );
 }
 const App = () => 
   <div>
-    <JokeAdvanced apiType="graphql" category="graphql" />
+    <JokeAdvanced queryKey="allBlogPosts" apiType="graphql" category="graphql" />
   </div>
 
 export default App;

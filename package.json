@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "apollo-client-preset": "^1.0.8",
     "chucknorris-io": "^1.0.5",
     "classnames": "^2.2.5",
     "dotenv": "^5.0.0",
+    "graphql": "^0.13.1",
+    "graphql-tag": "^2.7.3",
     "react": "^16.2.0",
+    "react-apollo": "^2.0.4",
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.1"
   },
