@@ -8,6 +8,7 @@
     "classnames": "^2.2.5",
     "dotenv": "^5.0.0",
     "emotion": "^9.0.1",
+    "emotion-theming": "^9.0.0",
     "graphql": "^0.13.1",
     "graphql-request": "^1.4.1",
     "graphql-tag": "^2.7.3",
