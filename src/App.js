@@ -1,75 +1,38 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import TipeApiComponent from "./Api.renderProps";
-import cn from 'classnames';
+import { render } from 'react-dom';
+//
+import { getData } from './shared/api/index';
+import { ArticleWrapper } from './components/markdown/wrapper';
+import { TipeProvider } from './shared/TipeContext/context';
+import { ArticleDetails } from './components/markdown/consumer'
 
-console.log(process.env)
-const Joke = ({ apiType, category }) => {
-  return (
-    <TipeApiComponent  apiType={apiType} category={category}>
-      {({ joke, fetchJoke, loading }) => (
-        <section className="hero is-primary">
-          <div className="hero-body">
-            <div className="container">
-              <h1 className="title" style={{ marginBottom: 30 }}>
-                Joke
-              </h1>
-              <h2 className="subtitle">{joke}</h2>
-            </div>
-          </div>
-        </section>
-      )}
-    </TipeApiComponent>
-  );
+const queryStr = `
+{
+    Webpage(id: "5a8ea44fa61b5500134fcd61") {
+     aboutMe
+     eggheadLink
+     tagline
+     pageColor
+     techBackground
+       }
+   }
+`;
+
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { data: {} };
+  }
+
+  componentDidMount() {
+    getData(queryStr).then(data => this.setState({ data }));
+  }
+
+  render() {
+    return (
+      <TipeProvider value={this.state.data}>
+                <ArticleWrapper />
+      </TipeProvider>
+    );
+  }
 }
-
-function JokeAdvanced({ queryKey, apiType,category }) {
-  const key = `${queryKey}`;
-
-  return (
-    <TipeApiComponent apiType={apiType} category={category}>
-      {({
-        joke, 
-        tipeIOData,
-        fetchJoke, 
-        fetchApi,
-        loading,
-        url }) =>  {
-        return (
-        <section className="hero is-info">
-          <div className="hero-body">
-            <div className="container">
-              <h1 className="title" style={{ marginBottom: 30 }}>
-                JokeAdvanced
-              </h1>
-              <h2 className="subtitle">{joke}</h2>
-              <p>
-                <b>Category</b>: {category}
-              </p>
-              <p style={{ marginBottom: 30 }}>
-                <b>Url</b>: <a href={url}>{url}</a>
-              </p>
-             
-              <a
-                className={cn("button is-info", {
-                  "is-loading": loading,
-                  "is-inverted": !loading
-                })}
-                onClick={fetchJoke}
-              >
-                Fetch New Joke
-              </a>
-            </div>
-          </div>
-        </section>
-      )}}
-    </TipeApiComponent>
-  );
-}
-const App = () => 
-  <div>
-    <JokeAdvanced queryKey="allBlogPosts" apiType="graphql" category="graphql" />
-  </div>
-
-export default App;
