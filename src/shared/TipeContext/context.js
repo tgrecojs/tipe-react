@@ -1,7 +1,17 @@
 import { createContext } from 'react';
 
-const TipeIOContext = createContext({  });
 
-export const TipeProvider = TipeIOContext.Provider;
+const TipeIOContext = createContext({
+    loading: true,
+    data : {}
+    /** default ctx value {} */ 
+});
 
-export const TipeConsumer = TipeIOContext.Consumer;
+const TipeProvider = TipeIOContext.Provider;
+
+const TipeConsumer = TipeIOContext.Consumer;
+
+export { 
+    TipeProvider as Provider,
+    TipeConsumer as Consumer
+}

@@ -30,7 +30,8 @@
   "devDependencies": {
     "babel-plugin-emotion": "^9.0.1",
     "babel-plugin-macros": "^2.1.0",
-    "react-styleguidist": "^6.2.5"
+    "react-styleguidist": "^6.2.5",
+    "react-test-renderer": "^16.2.0"
   },
   "browserslist": {
     "development": [
