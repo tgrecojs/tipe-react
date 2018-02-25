@@ -2,7 +2,7 @@ import { RenderMd, Page } from './component';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
-import { themes } from '../../App';
+import { themes } from '../utils';
 import renderer from 'react-test-renderer'
 
 const defaultProps = {

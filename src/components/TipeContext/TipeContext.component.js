@@ -1,7 +1,10 @@
 import React from 'react'
-import {render} from 'react-dom'
 import { getData } from '../../shared/api';
 
+/** 
+ * Need to pass the query up to this component
+ * 
+ */
 
 const queryStr = `
 {
@@ -35,13 +38,10 @@ export default class TipeProvider extends React.Component {
 }
 
 // convert the TipeContext.Consumer to a component injection API
-const TipeConsumer = ({component, ...rest}) => {
-  return (
-    <TipeContext.Consumer {...rest}>
-      {data => React.createElement(component, {data})}
-    </TipeContext.Consumer>
-  )
+const TipeConsumer = ({render, ...rest}) => {
+    return <TipeContext.Consumer {...rest}>{render}</TipeContext.Consumer>
 }
+  
 
 
 export { TipeConsumer }
