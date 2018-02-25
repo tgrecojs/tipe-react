@@ -1,10 +1,6 @@
 import { GraphQLClient, request } from 'graphql-request';
     const tipeApi = 'https://api.tipe.io/graphql';
 
-/** 
-  
-
-*/
 const client = new GraphQLClient(tipeApi, {
   headers: {
     'Content-Type': 'application/json',

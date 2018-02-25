@@ -1,30 +1,13 @@
 import React from 'react';
 import styled from 'react-emotion'
-
+import PropTypes from 'prop-types';
 const Markdown = require('react-markdown');
+const { string, object } = PropTypes
 
-/**
- * Style Props 
- * 
- * H1 -> H6 
- *  - Check out dynamically generating specific level headers
- *        * definitely can - use a size property 1-6
- *        * can just change the font family doing it
- *        * fontSize={6}   => 42px
- *        * fontSize={42} => 42px
- *        * cssGrid specifier <strikthrough>may be OD</strikthrough> super OD
- * 
- * <TipeImage /> 
- *      - We already know the size that were going to get the image back 
- *      
- * Markdown 
- * 
- */
-
- const defaultMdStyles = {
+const defaultMdStyles = {
    display: 'flex',
    flexDirection: 'column'
- }
+}
 
 const MdComponent = styled(Markdown)(props => ({
     ...defaultMdStyles,
@@ -32,7 +15,14 @@ const MdComponent = styled(Markdown)(props => ({
     color: props.theme.textColor,
 }))
 
+MdComponent.propTypes = {
+  theme: object,
+  source: string,
+}
+
 const Page = styled('div')(props => ({
+  display: !props.theme.flex ? 'flex' : `${props.theme.flex}`,
+  flexDirection: !props.theme.flexDirection ? 'column' : `${props.theme.flex}`,
   fontFamily: props.theme.fontFamily,
   backgroundColor:props.theme.primary,
   // trying to find the line between supplying styles / allowing customization

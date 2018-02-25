@@ -1,12 +1,6 @@
-import { RenderH1, 
-    RenderH2, RenderH3, RenderH4, RenderH5, RenderH6} from './text.components'
+import {H1,H2,H3,H4,H5,H6, PText} from './text.components'
 
 
 export {
-    RenderH1 as H1,
-    RenderH2 as H2,
-    RenderH3 as H3,
-    RenderH4 as H4,
-    RenderH5 as H5,
-    RenderH6 as H6,
+    H1, H2, H3, H4, H5, H6, PText
 }

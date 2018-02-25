@@ -1,10 +1,22 @@
 import { RenderMd, Page } from './component';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
+import { themes } from '../../App';
+import renderer from 'react-test-renderer'
 
-it('<Page /> without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<Page />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
+const defaultProps = {
+    theme: themes.cowboys
+}
 
+const createProps = ({theme, data} = defaultProps) => ({
+   ...defaultProps
+})
+
+
+
+test(`<Page />`, () => {
+  expect(
+    renderer.create(<Page />).toJSON()
+  ).toMatchSnapshot()
+})

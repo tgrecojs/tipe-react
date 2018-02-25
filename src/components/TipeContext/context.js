@@ -7,11 +7,13 @@ const TipeIOContext = createContext({
     /** default ctx value {} */ 
 });
 
+
+//export default TipeIOContext
+
+/**
 const TipeProvider = TipeIOContext.Provider;
-
 const TipeConsumer = TipeIOContext.Consumer;
-
 export { 
-    TipeProvider as Provider,
-    TipeConsumer as Consumer
+    TipeProvider, TipeConsumer
 }
+*/

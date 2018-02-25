@@ -2,6 +2,24 @@
 
 exports[`<H1 /> 1`] = `
 <h1
-  className="css-19fyqyq"
+  className="css-ycv91v"
+/>
+`;
+
+exports[`<H2 /> 1`] = `
+<h2
+  className="css-ycv91v"
+/>
+`;
+
+exports[`<H3 /> 1`] = `
+<h3
+  className="css-ycv91v"
+/>
+`;
+
+exports[`<H4 /> 1`] = `
+<h4
+  className="css-e42o64"
 />
 `;
